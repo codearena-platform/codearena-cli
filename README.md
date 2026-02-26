@@ -1,60 +1,60 @@
 # 💻 CodeArena CLI
 
-O **CodeArena CLI** é a sua ferramenta principal para criar, testar e enviar seus robôs para a arena global do CodeArena.
+The **CodeArena CLI** is your primary tool for creating, testing, and pushing your robots to the global CodeArena arena.
 
-## 🚀 Como Usar
+## 🚀 How to Use
 
-O CLI possui comandos simples para você começar rapidamente a desenvolver e publicar seus robôs.
+The CLI has simple commands to get you started quickly developing and publishing your robots.
 
-### 1. Inicializar um Novo Robô
+### 1. Initialize a New Robot
 
-Para inicializar um novo projeto de robô a partir de templates, use o comando `init`:
+To initialize a new robot project from templates, use the `init` command:
 
 ```bash
-codearena init <nome-do-robo> --lang <linguagem>
+codearena init <robot-name> --lang <language>
 ```
 
-**Parâmetros:**
-- `<nome-do-robo>`: O nome do diretório e do projeto a ser criado.
-- `--lang` ou `-l` (Opcional): A linguagem de programação do seu bot. As linguagens suportadas são `typescript`, `python` e `java`. O padrão é `typescript`.
+**Parameters:**
+- `<robot-name>`: The name of the directory and project to be created.
+- `--lang` or `-l` (Optional): The programming language of your bot. Supported languages are `typescript`, `python`, and `java`. The default is `typescript`.
 
-**Exemplo:**
+**Example:**
 ```bash
-codearena init meu-primeiro-robo --lang typescript
+codearena init my-first-robot --lang typescript
 ```
 
-Isso criará uma pasta `meu-primeiro-robo` com a estrutura inicial necessária para começar a programar a lógica do seu bot.
+This will create a `my-first-robot` folder with the initial structure needed to start programming your bot's logic.
 
-### 2. Enviar Robô para a Nuvem CodeArena
+### 2. Push Robot to the CodeArena Cloud
 
-Ao terminar de programar, você pode empacotar e enviar (fazer "push") do seu robô para os nossos servidores usando:
+When you're done programming, you can package and push your robot to our servers using:
 
 ```bash
 codearena push
 ```
 
-**Como Funciona:**
-- Execute este comando de dentro do diretório do seu robô, ou assegure-se de que um robô válido como `e2e-bot` (ou a pasta atual) existe no local.
-- O CLI lerá o código-fonte (por exemplo, `bot.ts`) e o enviará para o Gateway do CodeArena via gRPC.
-- Se o envio for bem-sucedido, o servidor retornará o ID do robô e a versão registrada.
+**How it Works:**
+- Run this command from within your robot's directory, or ensure a valid robot like `e2e-bot` (or the actual folder) exists there.
+- The CLI will read the source code (e.g., `bot.ts`) and send it to the CodeArena Gateway via gRPC.
+- If the push is successful, the server will return the robot ID and the registered version.
 
-## ⚙️ Instalação (Desenvolvimento Local)
+## ⚙️ Installation (Local Development)
 
-Se você quiser compilar ou instalar o CLI localmente:
+If you want to compile or install the CLI locally:
 
 ```bash
-# Baixar dependências
+# Download dependencies
 go mod tidy
 
-# Compilar
+# Compile
 go build -o codearena main.go
 
-# Instalar globalmente (Opcional)
+# Install globally (Optional)
 go install
 ```
 
-## 🏗️ Estrutura do Projeto
+## 🏗️ Project Structure
 
-- `main.go`: O ponto de entrada principal do CLI utilizando o framework [Cobra](https://github.com/spf13/cobra).
-- `internal/templates`: Diretório que armazena os esqueletos de projetos (templates) que são injetados durante o comando `init`.
-- `e2e-bot/`: Diretório de exemplo ou utilitário usado frequentemente para testes ponta a ponta.
+- `main.go`: The main entry point of the CLI using the [Cobra](https://github.com/spf13/cobra) framework.
+- `internal/templates`: Directory that stores project skeletons (templates) injected during the `init` command.
+- `e2e-bot/`: Example or utility directory frequently used for end-to-end testing.
