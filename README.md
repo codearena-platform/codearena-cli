@@ -16,7 +16,7 @@ codearena init <robot-name> --lang <language>
 
 **Parameters:**
 - `<robot-name>`: The name of the directory and project to be created.
-- `--lang` or `-l` (Optional): The programming language of your bot. Supported languages are `typescript`, `python`, and `java`. The default is `typescript`.
+- `--lang` or `-l` (Optional): The programming language of your bot. Supported languages are `typescript` and `python`. The default is `typescript`.
 
 **Example:**
 ```bash
@@ -47,7 +47,7 @@ If you want to compile or install the CLI locally:
 go mod tidy
 
 # Compile
-go build -o codearena main.go
+go build -o codearena ./cmd/codearena
 
 # Install globally (Optional)
 go install
@@ -55,6 +55,7 @@ go install
 
 ## 🏗️ Project Structure
 
-- `main.go`: The main entry point of the CLI using the [Cobra](https://github.com/spf13/cobra) framework.
+- `cmd/codearena/main.go`: The main entry point of the CLI using the [Cobra](https://github.com/spf13/cobra) framework.
 - `internal/templates`: Directory that stores project skeletons (templates) injected during the `init` command.
+- `codearena version`: Prints the build version, commit and date (populated by GoReleaser).
 - `e2e-bot/`: Example or utility directory frequently used for end-to-end testing.

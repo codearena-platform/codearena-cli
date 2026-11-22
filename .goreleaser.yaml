@@ -1,0 +1,46 @@
+version: 2
+
+project_name: codearena-cli
+
+before:
+  hooks:
+    - go mod tidy
+
+builds:
+  - id: codearena
+    main: ./cmd/codearena
+    binary: codearena
+    env:
+      - CGO_ENABLED=0
+    ldflags:
+      - -s -w
+      - -X github.com/codearena-platform/codearena-cli/internal/cmd.version={{ .Version }}
+      - -X github.com/codearena-platform/codearena-cli/internal/cmd.commit={{ .ShortCommit }}
+      - -X github.com/codearena-platform/codearena-cli/internal/cmd.date={{ .Date }}
+    goos:
+      - linux
+      - darwin
+      - windows
+    goarch:
+      - amd64
+      - arm64
+
+archives:
+  - formats: [tar.gz]
+    format_overrides:
+      - goos: windows
+        formats: [zip]
+    name_template: "{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
+    files:
+      - README.md
+
+checksum:
+  name_template: checksums.txt
+
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - '^docs:'
+      - '^test:'
+      - '^chore:'

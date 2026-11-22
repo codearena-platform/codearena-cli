@@ -1,5 +1,7 @@
 import { BaseBot, MatchState } from '@codearena/sdk';
 
+export const BOT_NAME: string = {{.BotNameTS}};
+
 export class {{.BotClassName}} extends BaseBot {
     public run(state: MatchState): void {
         this.ahead(10);
