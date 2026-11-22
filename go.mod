@@ -3,7 +3,7 @@ module github.com/codearena-platform/codearena-cli
 go 1.25.5
 
 require (
-	github.com/codearena-platform/codearena-core v0.0.0
+	github.com/codearena-platform/codearena-core v0.1.0
 	github.com/google/uuid v1.6.0
 	github.com/spf13/cobra v1.10.2
 	google.golang.org/grpc v1.79.1
@@ -19,5 +19,3 @@ require (
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20260128011058-8636f8732409 // indirect
 	google.golang.org/protobuf v1.36.11 // indirect
 )
-
-replace github.com/codearena-platform/codearena-core => ../codearena-core
