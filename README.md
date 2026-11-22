@@ -38,6 +38,23 @@ codearena push
 - The CLI will read the source code (e.g., `bot.ts`) and send it to the CodeArena Gateway via gRPC.
 - If the push is successful, the server will return the robot ID and the registered version.
 
+### 3. Authenticate
+
+Login uses the IAM OAuth flows through the gateway (default `https://localhost:8080`):
+
+```bash
+# Interactive users (PKCE, opens the browser)
+codearena login --client-id <oauth-client-id> --redirect-url http://127.0.0.1:8484/callback
+
+# Service accounts (client credentials)
+codearena login --client-id <oauth-client-id> --client-secret <oauth-client-secret>
+```
+
+TLS is always used unless `--insecure` is passed explicitly for local development.
+The bearer token is stored in `~/.codearena/config.json` with `0600` permissions.
+`push` uses TLS for gRPC as well (`--insecure` is the local-only opt-out) and never
+sends a client-supplied user id: the server derives the identity from the token.
+
 ## ⚙️ Installation (Local Development)
 
 If you want to compile or install the CLI locally:
